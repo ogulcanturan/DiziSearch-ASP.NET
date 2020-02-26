@@ -1,0 +1,472 @@
+﻿.body {
+    background: transparent;
+    background-image: url(../images/bgImages/85271.jpg);
+}
+
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0,0,0,.05);
+}
+
+.denedene {
+    margin-right: 45px;
+}
+
+.new {
+    background: #408BEA;
+    color: #fff;
+    border:solid 2px #408BEA;
+    border-radius: 2px;
+    font-size: 9px;
+    font-weight: 600;
+    text-transform: uppercase;
+    animation:flash linear .5s infinite;
+    -webkit-animation: flash linear .5s infinite;
+}
+
+@-webkit-keyframes flash {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: .1;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes flash {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: .1;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.body-out {
+    
+    /*border-top: solid 14px #000; /*#f8f9fa;*/
+    margin-top: 80px; /*56 yada 106*/
+}
+
+.body-out-login {
+    background-image: url(../images/bgImages/85271.jpg);
+    background-repeat: repeat;
+    display: block;
+    height: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+    color: #fff;
+}
+
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.footer {
+    text-align: center;
+    position: relative;
+    width: 100%;
+    white-space: nowrap;
+    height: 62px; /*Footerin bölme yüksekliği*/
+    line-height: 60px; /*Dikey yüksekliği*/
+}
+
+#nvbr {
+    background-color: #ebebeb;
+    background-image: url();
+    text-decoration-style: none;
+    border-top: 8px solid rgba(0,0,0,0.8);
+}
+
+.navbar-outer {
+}
+
+.navbar-inside {
+}
+
+
+.navbar-ul {
+}
+
+.navbar-li {
+}
+
+.navbar-a {
+}
+
+.navbar-brand {
+    color: rgba(0,0,0,0.8) !important;
+}
+
+    .navbar-brand:hover{
+        color:rgba(0,0,0,1) !important;
+    }
+
+.nav-link {
+    text-decoration-style:none;
+    color:#000 !important;
+}
+
+    .nav-link:hover{
+        background-color:#000 !important;
+        color: white !important;
+    }
+
+.nav-item{
+    margin-right:4px;
+}
+
+.ara-control{
+    display:inline-block;
+    width:auto;
+    line-height:1.5;
+    height:calc(2.25rem + 2px);
+    vertical-align:middle;
+    padding:0.375rem 0.75rem;
+    border:1px solid #000;
+    font-size:1rem;
+    color: #000;
+    background-color:#fff;
+    border-radius:0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    /*transition-property: border-color, box-shadow;
+    transition-duration: 0.15s, 0.15s;
+    transition-timing-function:ease-in-out,ease-in-out;
+    transition-delay:0s,0s;*/
+}
+
+    .ara-control:focus {
+        outline: 0;
+        box-shadow: 0 0 0 0.1rem #ffd800;
+        background-color: rgba(20,20,20,20);
+        color: #ffd800;
+        border: 2px double #ffd800 !important;
+    }
+
+.ara-control::-webkit-input-placeholder {
+    font-style: italic;
+}
+
+.ara-control:-moz-placeholder {
+    font-style: italic;
+}
+
+.ara-control::-moz-placeholder {
+    font-style: italic;
+}
+
+.ara-control:-ms-input-placeholder {
+    font-style: italic;
+}
+
+.table-header {
+    background-color: rgba(20,20,20,20);
+    color: red;
+}
+
+.a-beyaz {
+    color: #221f1f
+}
+
+    .a-beyaz:hover {
+        color: #b22020
+    }
+
+
+.goster-btn {
+    z-index: 0;
+    color: black;
+    background-color: transparent;
+    font-size: 48px;
+    transition: opacity 0s;
+    border: none;
+    overflow: hidden;
+    cursor: pointer;
+}
+    .goster-btn:hover {
+        text-decoration: none;
+    }
+    .goster-btn:focus {
+        outline: none;
+    }
+
+.btn-ekle {
+    background-color: rgba(20,20,20,20);
+    color: white;
+    border: 2px double rgba(20,20,20,20) !important;
+}
+
+    .btn-ekle:hover {
+        background-color: rgba(20,20,20,20);
+        color: #ffd800;
+        border: 2px double #ffd800 !important;
+    }
+
+.btn-ekle-page-selected {
+    background-color: rgba(20,20,20,20);
+    color: #ffd800;
+}
+
+    .btn-ekle-page-selected:hover {
+        background-color: rgba(20,20,20,20);
+        color: #ffd800;
+    }
+
+.btn-ekle-page-normal {
+    background-color: rgba(20,20,20,20);
+    color: white;
+}
+
+    .btn-ekle-page-normal:hover {
+        background-color: rgba(20,20,20,20);
+        color: #ffd800;
+    }
+
+.btn-ekle-login {
+    color: #ececeb;
+}
+
+    .btn-ekle-login:hover {
+        color: white;
+    }
+
+.btn-ekle-log-login {
+    color: #000;
+    background-color: #ececeb;
+}
+
+    .btn-ekle-log-login:hover {
+        color: white;
+        background-color: #000;
+    }
+
+.btn-gnc {
+    background-color: rgba(20,20,20,20);
+    border-color: white;
+    color: white;
+}
+
+    .btn-gnc:hover {
+        background-color: white;
+        color: #000;
+    }
+
+#btncls {
+    margin-left: 1200px;
+    margin-top: 40px;
+    border: 4px solid red;
+    border-radius: 12px;
+    background-color: red;
+    color: white;
+    font-weight: 700;
+    font-size: 24px;
+}
+    #btncls:hover {
+        background-color: #b22020;
+        border: 4px solid #b22020;
+        color:  aliceblue;
+    }
+
+.table-inner {
+    border: 2px solid;
+}
+
+.create-style {
+    background-color: rgba(20,20,20,20);
+    color: white;
+}
+
+.label-color {
+    color: red;
+}
+
+.zoom .expand {
+    transition: transform .4s; /* Animation */
+    margin: 0 auto;
+}
+
+.zoom:hover .expand {
+    transform: scale(1.15);
+}
+
+
+/*Dropdown*/
+/* Dropdown Button */
+.dropbtnn {
+    display: inline-block;
+    background-color: rgba(20,20,20,20);
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    border: 1px solid transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    cursor: pointer;
+    color: #ffd800;
+}
+
+    /* Dropdown button on hover & focus */
+    .dropbtnn:hover, .dropbtnn:focus {
+        color: white;
+    }
+
+/* The container <div> - needed to position the dropdown content */
+.dropdownn {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: rgba(20,20,20,20);
+    min-width: 160px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+    /* Links inside the dropdown */
+    .dropdown-content a {
+        color: #ffd800;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+        /* Change color of dropdown links on hover */
+        .dropdown-content a:hover {
+            background-color: rgba(20,20,20,20);
+            color: white;
+        }
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {
+    display: block;
+}
+
+.main-episode {
+    margin: 9px 0 0px 0px;
+    width: 353px;
+    height: auto;
+    float: left;
+    padding: 0;
+    font-size: 11px;
+    list-style: none;
+    color: #757575
+}
+
+@media screen and (max-width: 2000px) {
+    .change {
+        padding-left: 11px;
+    }
+
+    .byt {
+        width: 635px;
+        height: 400px;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .change {
+        padding-left: 106px;
+    }
+    .main-episode{
+        width:445px;
+    }
+}
+
+@media screen and (max-width: 980px) {
+    .change {
+        padding-left: 0;
+    }
+    .main-episode {
+        width: 665px;
+    }
+   
+}
+
+@media screen and (max-width: 800px) {
+    .byt {
+        width: 500px;
+        height: 300px;
+    }
+}
+
+@media screen and (max-width: 770px) {
+    .change {
+        padding-left: 33px;
+    }
+    .main-episode {
+        width: 510px;
+    }
+     #nvbr {
+        border-top: 0;
+        border-bottom: 8px solid #ecebeb;
+    }
+}
+
+
+
+@media screen and (max-width: 544px) { /*526NOrmalde*/
+    .change {
+        justify-content: center;
+        padding-right: 25px;
+    }
+
+    .goster-btn{
+        visibility:hidden;
+    }
+
+    .denedene {
+        margin-right: 0px;
+    }
+
+    .byt {
+        width: 392px;
+        height: 300px;
+    }
+    .main-episode {
+        width: 470px;
+    }
+}
+
+@media screen and (max-width: 510px) {
+    .main-episode {
+        width: 450px;
+    }
+}
+
+@media screen and (max-width: 480px) { /*526NOrmalde*/
+    .byt {
+        width: 392px;
+        height: 300px;
+    }
+    .main-episode {
+        width: 415px;
+    }
+}
+
+@media screen and (max-width: 380px) { /*526NOrmalde*/
+    .byt {
+        width: 295px;
+        height: 300px;
+    }
+    .main-episode {
+        width: 320px;
+    }
+}
