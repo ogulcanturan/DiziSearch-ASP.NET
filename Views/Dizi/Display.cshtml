@@ -1,0 +1,87 @@
+﻿@model DiziViewModel
+@{
+    ViewData["Title"] = Model.Dizi.Name;
+}
+<br />
+<br />
+<div class="" style="background-color:transparent;color:#000;">
+    <div class="row mb-1 box-shadow" style="line-height:80px;border-left:15px solid #ffd800;background-color:rgba(20,20,20,1);color:#ecebeb;">
+        <div>
+            <h1 style="font-weight:700;font-size:48px;line-height:60px;">&nbsp;@Model.Dizi.Name&nbsp;<i class="fas fa-star" style="color:#ffd800;font-size:36px;vertical-align:middle;"></i>&nbsp;@Model.Dizi.IMDBScoreStr</h1>
+        </div>
+    </div>
+    <div class="row box-shadow">
+        <div class="col-md-4" style="overflow:hidden;">
+            <div class="row col">
+                <img src="@Model.Dizi.Image" style="width:100%;height:100%;" class="form-control-file" alt="" />
+            </div>
+            <div class="row col">
+                <text class="">
+                    <i class="far fa-calendar-alt"></i>&nbsp;<a asp-action="Index" asp-route-category="@Model.Dizi.Year.Year.ToString()" asp-route-page="1">@Html.DisplayFor(m => m.Dizi.Year)</a>&nbsp;&nbsp;
+                    <i class="fas fa-globe-europe"></i>
+                    @Model.Dizi.Country&nbsp;
+                </text>
+            </div>
+            <div class="row col">
+                <text class="">
+                    <i class="far fa-user"></i>
+                    @Model.Dizi.Cast&nbsp;
+                </text>
+            </div>
+            <div class="row col">
+                <text>
+                    <i class="fas fa-hashtag"></i>
+                    @foreach (var cat in Model.DizininCategorisi)
+                    {
+                        <a asp-action="Index" asp-route-category="@cat" asp-route-page="1">@cat,</a>
+                    }
+                </text>
+            </div>
+        </div>
+        <div class="col-md-8 ">
+            <div class="row col">
+                <h1 style="font-family: 'Times New Roman', sans-serif; font-size:74px;font-weight:100;font-size:46px;">
+                    Summary
+                </h1>
+            </div>
+            <div class="row col">
+                <strong>
+                    @Html.DisplayFor(m => m.Dizi.Description)
+                </strong>
+            </div>
+        </div>
+    </div>
+    <br />
+    <h1 class="row" style="font-weight:700;color:#ebebeb;background-color:rgba(20,20,20,.2);border-left:15px solid #ffd800;">&nbsp;Available Episodes</h1>
+    <div class="box-shadow border-bottom" style="display:flex;flex-wrap:wrap;">
+        @foreach (var episode in Model.Episodes)
+        {
+            <div class="mr-1 mt-2">
+                <div class="oylesine" style="height:177px;width:273px;">
+                    <div class="rounded" style="height:100%;width:100%;display:block;overflow:hidden;">
+                        <a class="zoom" title="" asp-controller="Episode" asp-action="Display" asp-route-alias="@episode.Alias" asp-route-dizi="@episode.Dizi.Alias">
+                            <div style="position:relative;height:100%;">
+                                <img class="expand rounded" src="@episode.Dizi.Image" style="width:100%;" alt="">
+                                <div style="position:absolute;bottom:0;color:#fff;background-color:rgba(0,0,0,0.80);padding:6px 9px;width:100%;line-height:16px;">
+                                    @episode.Dizi.Name
+                                    <br />
+                                    @episode.Name
+                                </div>
+                                <div class="text-right" style="position:absolute;bottom:0;color:#fff;padding:6px 9px;width:100%;line-height:16px;">
+                                    <div itemtype="http://schema.org/AggregateRating" itemscope="" itemprop="aggregateRating">
+                                        <i class="fas fa-star" style="color:#ffd800"></i>
+                                        <strong><span itemprop="ratingValue">@episode.Dizi.IMDBScoreStr</span></strong>
+                                    </div>
+                                </div>
+                                <div class="rounded" style="position:absolute;right:5px;top:5px;padding:2px;color:#fff;background-color:rgba(0,0,0,0.70);"><i class="far fa-calendar-alt"></i> @Html.DisplayFor(m => episode.AddedDate) @episode.AddedDate.ToString().Substring(episode.AddedDate.ToString().IndexOf(':') - 7, 4) </div>
+                                <div style="position: absolute;left:5px;top:5px;width:30px;">
+                                    <img src="~/@episode.Subtitle" style="width:30px;" alt="">
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

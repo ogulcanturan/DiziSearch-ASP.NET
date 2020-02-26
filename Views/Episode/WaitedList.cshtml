@@ -1,0 +1,114 @@
+﻿@model IEnumerable<Episode>
+@using DiziSearch.Utility
+@{
+    ViewData["Title"] = "Episode";
+    int a = 1;
+
+}
+<br />
+<br />
+<div class="row">
+    <div class="col-6">
+        <h3 class="">Onaylanması Beklenen Bölümler</h3>
+    </div>
+    <div class="col-6 text-right">
+
+    </div>
+</div>
+<br />
+<table class="table" style="border:2px solid;">
+    <tr class="table-header">
+        <th>@Html.DisplayNameFor(m => m.Dizi.Image)</th>
+        <th>@Html.DisplayNameFor(m => m.UploadedBy)</th>
+        <th>@Html.DisplayNameFor(m => m.Dizi.Name)</th>
+        <th>@Html.DisplayNameFor(m => m.Season)</th>
+        <th>@Html.DisplayNameFor(m => m.Ep)</th>
+        <th>@Html.DisplayNameFor(m => m.Subtitle)</th>
+        <th>Onayla</th>
+         @if(User.IsInRole(Constants.MasterAdminUser))
+         {
+        <th>Sil</th>
+         }
+        <th></th>
+    </tr>
+    @foreach (var items in Model)
+    {
+        if (a == 1)
+        {
+    <tr class="table-inner">
+        <td style="padding:0;"> <a asp-action="Display" asp-route-alias="@items.Alias" asp-route-dizi="@items.Dizi.Alias"><img style="width:100px;" src="@items.Dizi.Image" alt="" /></a></td>
+        <td style="padding:0;">
+            @if (items.UploadedBy != null)
+            {
+                @items.UploadedBy.Substring(0, items.UploadedBy.IndexOf('@'))
+            }
+        </td>
+        <td style="padding:0;">@Html.DisplayFor(m => items.Dizi.Name)</td>
+        <td style="padding:0;">@Html.DisplayFor(m => items.Season)</td>
+        <td style="padding:0;">@Html.DisplayFor(m => items.Ep)</td>
+        <td style="padding:0;"><img style="margin-top:10px;margin-left:8px;" src="~/@items.Subtitle" alt=""></td>
+        <td style="padding:0;text-align:center;">
+            <form method="post" asp-route-id="@items.Id" asp-route-returnUrl="@Context.Request.Path.ToString()" asp-action="EditAuto">
+                <button style="margin-top:10px;margin-left:8px;" type="submit" class="btn btn-success"><i class="fas fa-check" style="font-size:large;"></i></button>
+            </form>
+        </td>
+        @if (User.IsInRole(Constants.MasterAdminUser))
+        {
+            <td style="padding:0;text-align:center;">
+                <form method="post" asp-route-id="@items.Id" asp-route-returnUrl="@Context.Request.Path.ToString()" asp-action="Delete">
+                    <button style="margin-top:10px;margin-left:8px;" type="submit" class="btn btn-danger"><i class="fas fa-trash-alt" style="font-size:large;"></i></button>
+                </form>
+            </td>
+        }
+        <td style="padding:0;" class="text-right">
+            <a asp-action="Edit" asp-route-id="@items.Id" class="btn btn-ekle">Edit</a>
+            <a asp-action="Details" asp-route-id="@items.Id" class="btn btn-ekle">Details</a>
+            @if (User.IsInRole(Constants.MasterAdminUser))
+            {
+                <a asp-action="Delete" asp-route-id="@items.Id" class="btn btn-ekle">Delete</a>
+            }
+        </td>
+    </tr>
+            a = 2;
+        }
+        else
+        {
+    <tr class="table-inner bg-light">
+        <td style="padding:0;"> <a asp-action="Display" asp-route-alias="@items.Alias" asp-route-dizi="@items.Dizi.Alias"><img style="width:100px;" src="@items.Dizi.Image" alt="" /></a></td>
+        <td style="padding:0;">
+            @if (items.UploadedBy != null)
+            {
+                @items.UploadedBy.Substring(0, items.UploadedBy.IndexOf('@'))
+            }
+        </td>
+        <td style="padding:0;">@Html.DisplayFor(m => items.Dizi.Name)</td>
+        <td style="padding:0;">@Html.DisplayFor(m => items.Season)</td>
+        <td style="padding:0;">@Html.DisplayFor(m => items.Ep)</td>
+        <td style="padding:0;"><img style="margin-top:10px;margin-left:8px;" src="~/@items.Subtitle" alt=""></td>
+        <td style="padding:0;text-align:center;">
+            <form method="post" asp-route-id="@items.Id" asp-route-returnUrl="@Context.Request.Path.ToString()" asp-action="EditAuto">
+                <button style="margin-top:10px;margin-left:8px;" type="submit" class="btn btn-success"><i class="fas fa-check" style="font-size:large;"></i></button>
+            </form>
+        </td>
+        @if (User.IsInRole(Constants.MasterAdminUser))
+        {
+            <td style="padding:0;text-align:center;">
+                <form method="post" asp-route-id="@items.Id" asp-route-returnUrl="@Context.Request.Path.ToString()" asp-action="Delete">
+                    <button style="margin-top:10px;margin-left:8px;" type="submit" class="btn btn-danger"><i class="fas fa-trash-alt" style="font-size:large;"></i></button>
+                </form>
+            </td>
+        }
+        <td style="padding:0;" class="text-right">
+            <a asp-action="Edit" asp-route-id="@items.Id" class="btn btn-ekle">Edit</a>
+            <a asp-action="Details" asp-route-id="@items.Id" class="btn btn-ekle">Details</a>
+            @if (User.IsInRole(Constants.MasterAdminUser))
+            {
+                <a asp-action="Delete" asp-route-id="@items.Id" class="btn btn-ekle">Delete</a>
+            }
+        </td>
+    </tr>
+            a = 1;
+        }
+    }
+</table>
+<br />

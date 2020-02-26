@@ -1,0 +1,150 @@
+﻿@model EpisodeViewModel
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = Model.Episode.Dizi.Name+" "+Model.Episode.Name +" izle";
+    var a = Model.Episode.Date.ToString().IndexOf(':');
+    int b = a - 7;
+}
+
+<br />
+<div class="">
+    <div class="row" style="line-height:80px;">
+        &nbsp;
+    </div>
+    <div class="row">
+        <h1 class="col box-shadow">
+            <img src="~/@Model.Episode.Subtitle" style="vertical-align:central;height:20px;" alt="" />
+            <span style="line-height:14px;font-family: 'Teko', sans-serif; font-size:44px;font-weight:600;">@Model.Episode.Dizi.Name</span>
+            <span style="font-size:44px;font-weight:600;font-family: 'Teko', sans-serif;">@Model.Episode.Name</span>
+            <span style="font-size:37px;font-family: 'Teko', sans-serif;">(@Model.Episode.EpName)</span>
+            <span class="float-right" style="font-size:18px;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif"><i class="far fa-calendar-alt"></i> @Html.DisplayFor(m => m.Episode.Date) @Model.Episode.Date.ToString().Substring(b, 4)</span>
+        </h1>
+    </div>
+    <div class="row mb-2">
+        <h5 class="col ml-md-5" style="font-size:16px;">
+            <span style="">
+                <a style="text-decoration:none;color:#000;font-weight:700;" asp-controller="Dizi" asp-action="Display" asp-route-alias="@Model.Episode.Dizi.Alias">@Model.Episode.Dizi.Name</a>&nbsp;<i style="font-size:12px;" class="fas fa-forward"></i>
+                <a style="text-decoration:none;color:#000;font-weight:700;" asp-controller="Episode" asp-action="Display" asp-route-alias="@Model.Episode.Alias" asp-route-dizi="@Model.Episode.Dizi.Alias" asp-route-id="@null">@Model.Episode.Name</a>
+            </span>
+        </h5>
+    </div>
+    <div class="row">
+        <div class="col-3">
+            <div class="dropdownn">
+                <button onclick="myFunction()" class="dropbtnn">Alternatifler&nbsp;<i class="fas fa-sort-down"></i></button>
+                <div id="myDropdownn" class="dropdown-content">
+                    @if (Model.Episode.Link1 != null)
+                    {
+                        @if (Context.Request.Path.ToString().Last() == 'e' || Context.Request.Path.ToString().Last() == '/' || Context.Request.Path.ToString().Last() == '1')
+                        {
+                            <a style="color:#ffd800;" asp-action="Display" asp-route-alias="@Model.Episode.Alias" asp-route-dizi="@Model.Episode.Dizi.Alias" asp-route-id="1">@Model.Episode.Link1.Substring(0, Model.Episode.Link1.IndexOf('-'))</a>
+                        }
+                        else
+                        {
+                            <a style="color:#fff;" asp-action="Display" asp-route-alias="@Model.Episode.Alias" asp-route-dizi="@Model.Episode.Dizi.Alias" asp-route-id="1">@Model.Episode.Link1.Substring(0, Model.Episode.Link1.IndexOf('-'))</a>
+                        }
+
+                    }
+                    @if (Model.Episode.Link2 != null)
+                    {
+                        @if (Context.Request.Path.ToString().Last() == '2')
+                        {
+                            <a style="color:#ffd800;" asp-action="Display" asp-route-alias="@Model.Episode.Alias" asp-route-dizi="@Model.Episode.Dizi.Alias" asp-route-id="2">@Model.Episode.Link2.Substring(0, Model.Episode.Link2.IndexOf('-'))</a>
+                        }
+                        else
+                        {
+                            <a style="color:#fff;" asp-action="Display" asp-route-alias="@Model.Episode.Alias" asp-route-dizi="@Model.Episode.Dizi.Alias" asp-route-id="2">@Model.Episode.Link2.Substring(0, Model.Episode.Link2.IndexOf('-'))</a>
+                        }
+
+                    }
+                    @if (Model.Episode.Link3 != null)
+                    {
+                        @if (Context.Request.Path.ToString().Last() == '3')
+                        {
+                            <a style="color:#ffd800;" asp-action="Display" asp-route-alias="@Model.Episode.Alias" asp-route-dizi="@Model.Episode.Dizi.Alias" asp-route-id="3">@Model.Episode.Link3.Substring(0, Model.Episode.Link3.IndexOf('-'))</a>
+                        }
+                        else
+                        {
+                            <a style="color:#fff;" asp-action="Display" asp-route-alias="@Model.Episode.Alias" asp-route-dizi="@Model.Episode.Dizi.Alias" asp-route-id="3">@Model.Episode.Link3.Substring(0, Model.Episode.Link3.IndexOf('-'))</a>
+                        }
+                    }
+                    @if (Model.Episode.Link4 != null)
+                    {
+                        @if (Context.Request.Path.ToString().Last() == '4')
+                        {
+                            <a style="color:#ffd800;" asp-action="Display" asp-route-alias="@Model.Episode.Alias" asp-route-dizi="@Model.Episode.Dizi.Alias" asp-route-id="4">@Model.Episode.Link4.Substring(0, Model.Episode.Link4.IndexOf('-'))</a>
+                        }
+                        else
+                        {
+                            <a style="color:#fff;" asp-action="Display" asp-route-alias="@Model.Episode.Alias" asp-route-dizi="@Model.Episode.Dizi.Alias" asp-route-id="4">@Model.Episode.Link4.Substring(0, Model.Episode.Link4.IndexOf('-'))</a>
+                        }
+                    }
+                    @if (Model.Episode.Link5 != null)
+                    {
+                        @if (Context.Request.Path.ToString().Last() == '5')
+                        {
+                            <a style="color:#ffd800;" asp-action="Display" asp-route-alias="@Model.Episode.Alias" asp-route-dizi="@Model.Episode.Dizi.Alias" asp-route-id="5">@Model.Episode.Link5.Substring(0, Model.Episode.Link5.IndexOf('-'))</a>
+                        }
+                        else
+                        {
+                            <a style="color:#fff;" asp-action="Display" asp-route-alias="@Model.Episode.Alias" asp-route-dizi="@Model.Episode.Dizi.Alias" asp-route-id="5">@Model.Episode.Link5.Substring(0, Model.Episode.Link5.IndexOf('-'))</a>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col-9 text-right">
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            @if (ViewBag.back != null)
+            {
+                <a class="btn btn-ekle" href="~/@Model.Episode.Dizi.Alias/@ViewBag.back">Önceki</a>
+            }
+            @if (ViewBag.next != null)
+            {
+                <a class="btn btn-ekle" href="~/@Model.Episode.Dizi.Alias/@ViewBag.next">Sonraki</a>
+            }
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-7">
+            <iframe class="byt" src="@Model.Episode.CurrentLink.Substring(Model.Episode.CurrentLink.IndexOf('-')+1)" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-7" style="overflow:auto;">
+            <details class="btn-ekle">
+                <summary>Bölüm Özeti</summary>
+                <text style="color:white;">@Model.Episode.Spoiler</text>
+            </details>
+        </div>
+    </div>
+    <div class="row box-shadow" style="line-height:110px;">
+        &nbsp;
+    </div>
+</div>
+<br />
+<br />
+
+
+@section Scripts{
+    <script>
+        function myFunction() {
+            document.getElementById("myDropdownn").classList.toggle("show");
+        }
+        // Close the dropdown menu if the user clicks outside of it
+        window.onclick = function (event) {
+            if (!event.target.matches('.dropbtnn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+    </script>
+}

@@ -1,0 +1,56 @@
+﻿@model AppUser
+@{
+    ViewData["Title"] = "Edit User";
+}
+<br />
+<div class="row">
+    <div class="col-6">
+        <h3 class="">Admin Edit</h3>
+    </div>
+    <div class="col-6 text-right">
+        <a asp-action="Index" class="btn btn-ekle">Back To List</a>
+    </div>
+</div>
+<br />
+<form method="post" asp-action="Edit">
+    <input type="hidden" asp-for="Id" />
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="col" style="border:2px solid;">
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label asp-for="Admin"></label>
+            </div>
+            <div class="col-4">
+                <select asp-for="Admin" asp-items="Html.GetEnumSelectList<AppUser.EAdmin>()" class="form-control">
+                    <option value="" selected="selected">&lt;Select&gt;</option>
+                </select>
+            </div>
+        </div>
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label asp-for="UserName"></label>
+            </div>
+            <div class="col-4">
+                <input asp-for="UserName" class="form-control" />
+            </div>
+        </div>
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label asp-for="Email"></label>
+            </div>
+            <div class="col-4">
+                <input asp-for="Email" type="email" class="form-control" />
+            </div>
+        </div>
+        <div class="row create-style">
+            <div class="col-2"></div>
+            <div class="col-4 text-right pt-2 pb-2">
+                <input type="submit" class="btn btn-gnc" style="border-color:white;" value="Edit" asp-route-id="@Model.Id" />
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

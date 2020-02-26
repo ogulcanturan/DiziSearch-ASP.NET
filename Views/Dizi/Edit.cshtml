@@ -1,0 +1,120 @@
+﻿@model Dizi
+@{
+    ViewData["Title"] = "Edit";
+}
+<br />
+<br />
+<div class="row">
+    <div class="col-6">
+        <h3 class="">Edit</h3>
+    </div>
+    <div class="col-6 text-right">
+        <a asp-action="AdminIndex" class="btn btn-ekle">Back To List</a>
+    </div>
+</div>
+<br />
+<form method="post" asp-action="Edit" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Id" />
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="col" style="border:2px solid;">
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label asp-for="Image"></label>
+            </div>
+            <div class="col-4">
+                <img src="@Model.Image" class="form-control-file" alt="" />
+            </div>
+        </div>
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label asp-for="Name"></label>
+            </div>
+            <div class="col-4">
+                <input asp-for="Name" class="form-control" />
+            </div>
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label asp-for="Year">Yıl (@Html.DisplayFor(m => m.Year))</label>
+            </div>
+            <div class="col-4">
+                <input asp-for="Year" class="form-control" />
+            </div>
+        </div>
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label asp-for="Country"></label>
+            </div>
+            <div class="col-4">
+                <input asp-for="Country" class="form-control" />
+            </div>
+        </div>
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label asp-for="Cast"></label>
+            </div>
+            <div class="col-4">
+                <input asp-for="Cast" class="form-control" />
+            </div>
+        </div>
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label asp-for="IMDBScore"></label>
+            </div>
+            <div class="col-4">
+                <input asp-for="IMDBScore" value="@Model.IMDBScoreStr" class="form-control" />
+            </div>
+        </div>
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label asp-for="Image"></label>
+            </div>
+            <div class="col-4">
+                <input asp-for="Image" type="file" class="form-control" />
+            </div>
+        </div>
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label asp-for="Description"></label>
+            </div>
+            <div class="col-4">
+                <textarea asp-for="Description" class="form-control" style="height:200px;overflow:auto;"></textarea>
+            </div>
+        </div>
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label asp-for="Genre"></label>
+            </div>
+            <div class="col-4">
+                <input asp-for="Genre" class="form-control" />
+            </div>
+        </div>
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label asp-for="InFront"></label>
+            </div>
+            <div class="col-4">
+                <input asp-for="InFront" type="checkbox" class="form-control" />
+            </div>
+        </div>
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label asp-for="Approved"></label>
+            </div>
+            <div class="col-4">
+                <input asp-for="Approved" type="checkbox" class="form-control" />
+            </div>
+        </div>
+        <div class="row create-style">
+            <div class="col-2"></div>
+            <div class="col-4 text-right pt-2 pb-2">
+                <input type="submit" asp-route-id="@Model.Id" style="border-color:white;" class="btn btn-gnc" value="Edit" />
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

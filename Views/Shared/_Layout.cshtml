@@ -1,0 +1,111 @@
+﻿@using DiziSearch.Utility;
+@{ 
+    string first = "";
+    string second = "";
+    if (Context.Request.Path.ToString() == "/")
+    {
+        first = "border-bottom:3px double #ffd800;background-color:rgba(20,20,20,1) !important;color:#ecebeb !important;"; 
+    }
+    if(Context.Request.Path.ToString() == "/Dizi" || Context.Request.Path.ToString().Contains("/Diziler"))
+    {
+        second = "border-bottom:3px double #ffd800;background-color:rgba(20,20,20,1) !important;color:#ecebeb !important;";
+    }
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title - DiziSearch</title>
+    <link href="https://fonts.googleapis.com/css?family=Teko" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+</head>
+<body class="body">
+    
+    <header class="">
+        <nav id="nvbr" class="container navbar navbar-expand-lg fixed-top body box-shadow navbar-outer navbar-light">
+            <div class="container navbar-inside">
+                <a style="margin-right:35px;font-size:32px;text-decoration-style:none;font-weight:700;" class="navbar-brand" asp-controller="Home" asp-action="Index">DiziSearch</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto navbar-ul">
+                        <li class="nav-item active navbar-li">
+                            <a class="nav-link" style=@first asp-controller="Home" asp-action="Index">Anasayfa</a>
+                        </li>
+                        <li class="nav-item navbar-li">
+                            <a class="nav-link navbar-a" style="@second" asp-controller="Dizi" asp-action="Index" asp-route-category="" asp-route-page="1">Diziler</a>
+                        </li>
+                        @if (User.IsInRole(Constants.NormalAdminUser) || User.IsInRole(Constants.MasterAdminUser) || User.IsInRole(Constants.ModeratorUser))
+                        {
+                            <li class="nav-item navbar-li">
+                                <a style="text-decoration-style:none;color:#000;" class="nav-link navbar-a" asp-controller="Dizi" asp-action="AdminIndex">Admin Diziler</a>
+                            </li>
+                            <li class="nav-item navbar-li">
+                                <a style="text-decoration-style:none;color:#000;" class="nav-link navbar-a" asp-controller="Episode" asp-action="Index">Admin Bölümler</a>
+                            </li>
+                        }
+                        @if (User.IsInRole(Constants.MasterAdminUser))
+                        {
+                            <li class="nav-item navbar-li">
+                                <a style="text-decoration-style:none;color:#000;" class="nav-link navbar-a" asp-controller="Admin" asp-action="Index">Admin Panel</a>
+                            </li>
+                        }
+                        <li hidden style="text-decoration-style:none;" class="nav-item dropdown navbar-li">
+                            <a style="text-decoration-style:none;color:#000;" class="nav-link dropdown-toggle navbar-a" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Dropdown
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a style="text-decoration-style:none;" class="dropdown-item" href="#">Action</a>
+                                <a style="text-decoration-style:none;" class="dropdown-item" href="#">Another action</a>
+                                <div class="dropdown-divider"></div>
+                                <a style="text-decoration-style:none;" class="dropdown-item" href="#">Something else here</a>
+                            </div>
+                        </li>
+                        @if (User.IsInRole(Constants.MasterAdminUser) || User.IsInRole(Constants.NormalAdminUser) || User.IsInRole(Constants.ModeratorUser))
+                        {
+                            <li class="nav-item navbar-li">
+                                <a style="text-decoration-style:none;color:#000;" class="nav-link navbar-a" asp-controller="Account" asp-action="Logout">@await Component.InvokeAsync("UserName")</a>
+                            </li>
+                        }
+                    </ul>
+                    <form asp-controller="Dizi" asp-action="Index" asp-route-category="" asp-route-page="1" class="form-inline my-2 my-lg-0">
+                        <input class="ara-control mr-sm-2" type="text" name="category" placeholder="Dizi Ara..." aria-label="Search">
+                        <button class="btn btn-ekle my-2 my-sm-0" type="submit">Ara</button>
+                    </form>
+                </div>
+            </div>
+
+        </nav>
+    </header>
+    <div class="body-out" style="">
+        <div class="container body-content" style="background-color:rgba(235, 235, 235,0.9);">
+            <main role="main" class="">
+                @RenderBody()
+            </main>
+        </div>
+    </div>
+
+    <footer style="border-top:2px ridge #808080;background-image:url();background-color:rgba(235,235,235,.9);font-weight:700;" class="container footer ">
+        <div class="container">
+            &copy; 2019 - Designed by Oğulcan TURAN
+        </div>
+    </footer>
+
+    <script src="~/js/site.js"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script>
+
+        $("#btncls").click(function () {
+            var $hid = $('.btnhid')
+            $hid.attr('hidden', true);
+        });
+    </script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

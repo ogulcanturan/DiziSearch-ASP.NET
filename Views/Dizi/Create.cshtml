@@ -1,0 +1,112 @@
+﻿@model Dizi
+@{
+    ViewData["Title"] = "Create";
+}
+<br />
+<br />
+<div class="row">
+    <div class="col-6">
+        <h3 class="">Dizi Create</h3>
+    </div>
+    <div class="col-6 text-right">
+        <a asp-action="AdminIndex" class="btn btn-ekle">Back To List</a>
+    </div>
+</div>
+<br />
+<form method="post" asp-action="Create" enctype="multipart/form-data">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="col" style="border:2px solid;">
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label asp-for="Name"></label>
+            </div>
+            <div class="col-4">
+                <input asp-for="Name" class="form-control" />
+            </div>
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label asp-for="Year"></label>
+            </div>
+            <div class="col-4">
+                <input asp-for="Year" class="form-control" />
+            </div>
+        </div>
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label asp-for="Country"></label>
+            </div>
+            <div class="col-4">
+                <input asp-for="Country" class="form-control" />
+            </div>
+        </div>
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label asp-for="Cast"></label>
+            </div>
+            <div class="col-4">
+                <input asp-for="Cast" class="form-control" />
+            </div>
+        </div>
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label asp-for="IMDBScore"></label>
+            </div>
+            <div class="col-4">
+                <input asp-for="IMDBScore" class="form-control" />
+            </div>
+        </div>
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label asp-for="Image"></label>
+            </div>
+            <div class="col-4">
+                <input asp-for="Image" type="file" class="form-control" />
+            </div>
+        </div>
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label asp-for="Description"></label>
+            </div>
+            <div class="col-4">
+                <textarea asp-for="Description" class="form-control" style="height:300px;overflow:auto;"></textarea>
+            </div>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label asp-for="Genre"></label>
+            </div>
+            <div class="col-4">
+                <input asp-for="Genre" class="form-control" />
+            </div>
+        </div>
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label asp-for="InFront"></label>
+            </div>
+            <div class="col-4">
+                <input asp-for="InFront" type="checkbox" class="form-control" />
+            </div>
+        </div>
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label asp-for="Approved"></label>
+            </div>
+            <div class="col-4">
+                <input asp-for="Approved" type="checkbox" class="form-control" />
+            </div>
+        </div>
+        <div class="row create-style">
+            <div class="col-2"></div>
+            <div class="col-4 text-right pt-2 pb-2">
+                <input type="submit" class="btn btn-gnc" style="border-color:white;" value="Create" />
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts{ 
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

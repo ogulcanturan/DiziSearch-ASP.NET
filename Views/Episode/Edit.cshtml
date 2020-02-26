@@ -1,0 +1,216 @@
+﻿@model EpisodeViewModel
+@{
+    ViewData["Title"] = "Edit";
+    string flag;
+    int deger;
+    if (@Model.Episode.Subtitle == "images/FlagImages/0.png")
+    {
+        flag = "Selected > NA";
+        deger = 0;
+    }
+    else if (@Model.Episode.Subtitle == "images/FlagImages/1.png")
+    {
+        flag = "Selected > TR";
+        deger = 1;
+    }
+    else
+    {
+        flag = "Selected > EN";
+        deger = 2;
+    }
+
+    int say = 0;
+
+    @if (Model.Episode.Link1 != null && Model.Episode.Link1 != "")
+    {
+        say += 1;
+    }
+    @if (Model.Episode.Link2 != null && Model.Episode.Link2 != "")
+    {
+        say += 1;
+    }
+    @if (Model.Episode.Link3 != null && Model.Episode.Link3 != "")
+    {
+        say += 1;
+    }
+    @if (Model.Episode.Link4 != null && Model.Episode.Link1 != "")
+    {
+        say += 1;
+    }
+    @if (Model.Episode.Link5 != null && Model.Episode.Link1 != "")
+    {
+        say += 1;
+    }
+
+}
+<br />
+<div class="row">
+    <div class="col-6">
+        <h3 class="">Episode Edit</h3>
+    </div>
+    <div class="col-6 text-right">
+        <a asp-action="Index" class="btn btn-ekle">Back To List</a>
+    </div>
+</div>
+<br />
+<form method="post" asp-action="Edit">
+    <input type="hidden" asp-for="Episode.Id" />
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="col" style="border:2px solid;">
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label asp-for="Episode.Dizi.Image"></label>
+            </div>
+            <div class="col-4">
+                <img src="@Model.Episode.Dizi.Image"  class="form-control-file" style="height:200px;background-color:#000;" alt="" />
+            </div>
+            <div class="col-6">
+                <h2>@Model.Episode.Dizi.Name @Model.Episode.Name</h2>
+            </div>
+        </div>
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label asp-for="Episode.DiziId"></label>
+            </div>
+            <div class="col-4">
+                <select asp-for="Episode.DiziId" asp-items="Model.Diziler.ToSelectListItems(Model.Episode.DiziId)" class="form-control">
+                    <option value="">&lt;Select&gt;</option>
+                </select>
+            </div>
+            <span asp-validation-for="Episode.DiziId" class="text-danger"></span>
+        </div>
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label asp-for="Episode.Season"></label>
+            </div>
+            <div class="col-4">
+                <input asp-for="Episode.Season" class="form-control" />
+            </div>
+            <span asp-validation-for="Episode.Season" class="text-danger"></span>
+        </div>
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label asp-for="Episode.Ep"></label>
+            </div>
+            <div class="col-4">
+                <input asp-for="Episode.Ep" class="form-control" />
+            </div>
+            <span asp-validation-for="Episode.Ep" class="text-danger"></span>
+        </div>
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label asp-for="Episode.Durum"></label>
+            </div>
+            <div class="col-4">
+                <select asp-for="Episode.Durum" asp-items="Html.GetEnumSelectList<Episode.EDurum>()" class="form-control"></select>
+            </div>
+        </div>
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label asp-for="Episode.Date"></label>
+                (@Model.Episode.Date.ToString().Substring(0, 10))
+
+            </div>
+            <div class="col-4">
+                <input asp-for="Episode.Date" class="form-control" style="height:56px;" />
+            </div>
+        </div>
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label asp-for="Episode.EpName"></label>
+            </div>
+            <div class="col-4">
+                <input asp-for="Episode.EpName" placeholder="Gerekli değil" class="form-control" />
+            </div>
+        </div>
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label>Available Link</label>
+            </div>
+            <div class="col-4">
+                <select id="select_option" class="form-control">
+                    @for (; say <= 5; say++)
+                    {
+                        <option value="@say">@say</option>
+                    }
+
+                </select>
+            </div>
+            <div class="col-6" id="link">
+                @if (Model.Episode.Link1 != null && Model.Episode.Link1 != "")
+                {
+                    <input class="form-control searchField" asp-for="Episode.Link1" />
+                }
+                @if (Model.Episode.Link2 != null && Model.Episode.Link2 != "")
+                {
+                    <input class="form-control searchField" asp-for="Episode.Link2" />
+                }
+                @if (Model.Episode.Link3 != null && Model.Episode.Link3 != "")
+                {
+                    <input class="form-control searchField" asp-for="Episode.Link3" />
+                }
+                @if (Model.Episode.Link4 != null && Model.Episode.Link1 != "")
+                {
+                    <input class="form-control searchField" asp-for="Episode.Link4" />
+                }
+                @if (Model.Episode.Link5 != null && Model.Episode.Link1 != "")
+                {
+                    <input class="form-control searchField" asp-for="Episode.Link5" />
+                }
+            </div>
+        </div>
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label asp-for="Episode.Spoiler"></label>
+            </div>
+            <div class="col-4">
+                <textarea asp-for="Episode.Spoiler" class="form-control" placeholder="Gerekli değil" style="height:150px;overflow:auto;"></textarea>
+            </div>
+        </div>
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label asp-for="Episode.Subtitle"></label>
+            </div>
+            <div class="col-4">
+                <select asp-for="Episode.Subtitle" asp-items="Html.GetEnumSelectList<Episode.ESubtitle>()" class="form-control">
+                    <option value="@deger">@flag</option>
+                </select>
+            </div>
+        </div>
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label asp-for="Episode.Approved"></label>
+            </div>
+            <div class="col-4">
+                <input asp-for="Episode.Approved" type="checkbox" class="form-control" />
+            </div>
+        </div>
+        <div class="row create-style">
+            <div class="col-2">&nbsp;</div>
+            <div class="col-4 text-right pt-2 pb-2">
+                <input type="submit" asp-action="Edit" asp-route-id="@Model.Episode.Id" class="btn btn-gnc" style="border-color:white;"  value="Update" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div hidden class="">
+    <input class="searchField form-control" asp-for="Episode.Link1" />
+    <input class="searchField form-control" asp-for="Episode.Link2" />
+    <input class="searchField form-control" asp-for="Episode.Link3" />
+    <input class="searchField form-control" asp-for="Episode.Link4" />
+    <input class="searchField form-control" asp-for="Episode.Link5" />
+</div>
+
+@section Scripts{
+    <script>
+        $("#select_option").change(function () {
+            $("#link").empty();
+            var b = $("#select_option").val();
+            for (i = 1; i <= b; i++) {
+                $("#link").append('<input value="' + document.querySelectorAll('.searchField')[i - 1].value + '" type="text" id="Episode_Link' + i + '" name="Episode.Link' + i + '" class="form-control" placeholder="Örnek => İSİM-https://... veya https://... veya -https://...">');
+            }
+        });
+    </script>
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

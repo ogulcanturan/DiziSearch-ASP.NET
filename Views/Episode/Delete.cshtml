@@ -1,0 +1,109 @@
+﻿@model EpisodeViewModel
+@{
+    ViewData["Title"] = "Delete";
+    var a = Model.Episode.Date.ToString().IndexOf(':');
+    int b = a - 7;
+}
+<br />
+<br />
+<div class="row">
+    <div class="col-6">
+        <h3 class="">Delete</h3>
+    </div>
+    <div class="col-6 text-right">
+        <a asp-action="Index" class="btn btn-ekle">Back To List</a>
+    </div>
+</div>
+<br />
+<form method="post" asp-action="Delete">
+    <input type="hidden" asp-for="Episode.Id" />
+    <div class="col" style="border:2px solid;">
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label asp-for="Episode.Dizi.Image" class="label-color"></label>
+            </div>
+            <div class="col-lg-4">
+                <a asp-action="Display" asp-route-alias="@Model.Episode.Alias" asp-route-dizi="@Model.Episode.Dizi.Alias">
+                    <img class="form-control-file" src="@Model.Episode.Dizi.Image" alt="" />
+                </a>
+            </div>
+        </div>
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label asp-for="Episode.Name" class="label-color"></label>
+            </div>
+            <div class="col-lg-4">
+                @Html.DisplayFor(m => m.Episode.Name) <small style="font-weight:700;"> (@Html.DisplayFor(m => m.Episode.EpName))</small>  <img src="~/@Model.Episode.Subtitle" alt="" />
+            </div>
+        </div>
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label asp-for="Episode.Date" class="label-color"></label>
+            </div>
+            <div class="col-lg-4">
+                @Html.DisplayFor(m => m.Episode.Date) @Model.Episode.Date.ToString().Substring(b, 4)
+            </div>
+        </div>
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label asp-for="Episode.Dizi.Country" class="label-color"></label>
+            </div>
+            <div class="col-lg-4">
+                @Html.DisplayFor(m => m.Episode.Dizi.Country)
+            </div>
+        </div>
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label asp-for="Episode.Spoiler" class="label-color"></label>
+            </div>
+            <div class="col-lg-4">
+                @Html.DisplayFor(m => m.Episode.Spoiler)
+            </div>
+        </div>
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label asp-for="Episode.Approved" class="label-color"></label>
+            </div>
+            <div class="col-lg-4">
+                @Html.DisplayFor(m => m.Episode.Approved)
+            </div>
+        </div>
+        <div class="row create-style">
+            <div class="col-2">
+                <label class="label-color" style="text-decoration:underline;">Specific Infos</label>
+            </div>
+            <div class="col-4">
+            </div>
+        </div>
+        <div class="row create-style">
+            <div class="col-2">
+                <label asp-for="Episode.AddedDate" class="label-color"></label>
+            </div>
+            <div class="col-lg-4">
+                @Html.DisplayFor(m => m.Episode.AddedDate)
+            </div>
+        </div>
+        <div class="row  create-style">
+            <div class="col-2">
+                <label asp-for="Episode.UploadedBy" class="label-color"></label>
+            </div>
+            <div class="col-4">
+                @Html.DisplayFor(m => m.Episode.UploadedBy)
+            </div>
+        </div>
+        <div class="row  create-style">
+            <div class="col-2">
+                <label asp-for="Episode.ApprovedBy" class="label-color"></label>
+            </div>
+            <div class="col-4">
+                @Html.DisplayFor(m => m.Episode.ApprovedBy)
+            </div>
+        </div>
+        <div class="row create-style">
+            <div class="col-2">&nbsp;</div>
+            <div class="col-4 text-right pt-2 pb-2">
+                <input type="submit" asp-action="Delete" asp-route-id="@Model.Episode.Id" class="btn btn-gnc" style="border-color:white;" value="Delete" />
+            </div>
+        </div>
+    </div>
+</form>

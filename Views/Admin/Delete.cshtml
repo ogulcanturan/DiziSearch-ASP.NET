@@ -1,0 +1,52 @@
+﻿@model AppUser
+@{
+    ViewData["Title"] = "Delete User";
+}
+<br />
+<div class="row">
+    <div class="col-6">
+        <h3 class="">User Delete</h3>
+    </div>
+    <div class="col-6 text-right">
+        <a asp-action="Index" class="btn btn-ekle">Back To List</a>
+    </div>
+</div>
+<br />
+<form method="post" asp-action="Delete">
+    <input type="hidden" asp-for="Id" />
+    <div class="col" style="border:2px solid;">
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label asp-for="Admin"></label>
+            </div>
+            <div class="col-4">
+                @if (Model.StatusRole == "0")
+                {
+                    <input disabled value="Master Admin" class="form-control" />
+                }
+                else if (@Model.StatusRole == "1")
+                {
+                    <input disabled value="Normal Admin" class="form-control" />
+                }
+                else
+                {
+                    <input disabled value="Moderator" class="form-control" />
+                }
+            </div>
+        </div>
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label asp-for="UserName"></label>
+            </div>
+            <div class="col-4">
+                <input asp-for="Email" disabled class="form-control" />
+            </div>
+        </div>
+        <div class="row create-style">
+            <div class="col-2"></div>
+            <div class="col-4 text-right pt-2 pb-2">
+                <input type="submit" class="btn btn-gnc" style="border-color:white;" value="Delete" asp-route-id="@Model.Id" asp-action="Delete" />
+            </div>
+        </div>
+    </div>
+</form>

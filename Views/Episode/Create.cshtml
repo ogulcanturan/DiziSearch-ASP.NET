@@ -1,0 +1,134 @@
+﻿@model EpisodeViewModel
+@{
+    ViewData["Title"] = "Create";
+}
+<br />
+<br />
+<div class="row">
+    <div class="col-6">
+        <h3 class="">Episode Create</h3>
+    </div>
+    <div class="col-6 text-right">
+        <a asp-action="Index" class="btn btn-ekle">Back To List</a>
+    </div>
+</div>
+<br />
+<form method="post" asp-action="Create">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="col" style="border:2px solid;">
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label asp-for="Episode.DiziId"></label>
+            </div>
+            <div class="col-4">
+                <select asp-for="Episode.DiziId" asp-items="Model.Diziler.ToSelectListItems(Model.Episode.DiziId)" class="form-control">
+                    <option value="">&lt;Select&gt;</option>
+                </select>
+            </div>
+            <span asp-validation-for="Episode.DiziId" class="text-danger"></span>
+        </div>
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label asp-for="Episode.Season"></label>
+            </div>
+            <div class="col-4">
+                <input asp-for="Episode.Season" class="form-control" />
+            </div>
+            <span asp-validation-for="Episode.Season" class="text-danger"></span>
+        </div>
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label asp-for="Episode.Ep"></label>
+            </div>
+            <div class="col-4">
+                <input asp-for="Episode.Ep" class="form-control" />
+            </div>
+            <span asp-validation-for="Episode.Ep" class="text-danger"></span>
+        </div>
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label asp-for="Episode.Durum"></label>
+            </div>
+            <div class="col-4">
+                <select asp-for="Episode.Durum" asp-items="Html.GetEnumSelectList<Episode.EDurum>()" class="form-control"></select>
+            </div>
+        </div>
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label asp-for="Episode.Date"></label>
+            </div>
+            <div class="col-4">
+                <input asp-for="Episode.Date" class="form-control" />
+            </div>
+        </div>
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label asp-for="Episode.EpName"></label>
+            </div>
+            <div class="col-4">
+                <input asp-for="Episode.EpName" placeholder="Gerekli değil" class="form-control" />
+            </div>
+        </div>
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label>Available Link</label>
+            </div>
+            <div class="col-4">
+                <select id="select_option" class="form-control">
+                    <option value="0" selected="selected">&lt;Select&gt;</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+            <div class="col-6" id="link">
+
+            </div>
+        </div>
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label asp-for="Episode.Spoiler"></label>
+            </div>
+            <div class="col-4">
+                <textarea asp-for="Episode.Spoiler" class="form-control" placeholder="Gerekli değil" style="height:200px;overflow:auto;"></textarea>
+            </div>
+        </div>
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label asp-for="Episode.Subtitle"></label>
+            </div>
+            <div class="col-4">
+                <select asp-for="Episode.Subtitle" asp-items="Html.GetEnumSelectList<Episode.ESubtitle>()" class="form-control"></select>
+            </div>
+        </div>
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label asp-for="Episode.Approved"></label>
+            </div>
+            <div class="col-4">
+                <input asp-for="Episode.Approved" type="checkbox" class="form-control" />
+            </div>
+        </div>
+        <div class="row create-style">
+            <div class="col-2"></div>
+            <div class="col-4 text-right pt-2 pb-2">
+                <input type="submit" class="btn btn-gnc" style="border-color:white;" value="Create" />
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts{
+    <script>
+        $("#select_option").change(function () {
+            $("#link").empty();
+            var b = $("#select_option").val();
+            for (i = 1; i <= b; i++) {
+                $("#link").append('<input type="text" id="Episode_Link' + i + '" name="Episode.Link' + i + '" class="form-control" placeholder="Örnek => İSİM-https://... veya https://... veya -https://...">');
+            }
+        });
+    </script>
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

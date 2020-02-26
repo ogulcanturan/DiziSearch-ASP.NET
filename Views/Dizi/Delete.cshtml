@@ -1,0 +1,137 @@
+﻿@model Dizi
+@{
+    ViewData["Title"] = "Delete";
+}
+<br />
+<br />
+<div class="row">
+    <div class="col-6">
+        <h3 class="">Delete</h3>
+    </div>
+    <div class="col-6 text-right">
+        <a asp-action="AdminIndex" class="btn btn-ekle">Back To List</a>
+    </div>
+</div>
+<br />
+<form method="post" asp-action="Delete">
+    <input type="hidden" asp-for="Id" />
+    <div class="col" style="border:2px solid;">
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label asp-for="Image" class="label-color"></label>
+            </div>
+            <div class="col-4">
+                <img src="@Model.Image" alt="" />
+            </div>
+        </div>
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label asp-for="Name" class="label-color"></label>
+            </div>
+            <div class="col-4">
+                @Html.DisplayFor(m => m.Name)
+            </div>
+        </div>
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label asp-for="Year" class="label-color"></label>
+            </div>
+            <div class="col-4">
+                @Html.DisplayFor(m => m.Year)
+            </div>
+        </div>
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label asp-for="Country" class="label-color"></label>
+            </div>
+            <div class="col-4">
+                @Html.DisplayFor(m => m.Country)
+            </div>
+        </div>
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label asp-for="Cast" class="label-color"></label>
+            </div>
+            <div class="col-4">
+                @Html.DisplayFor(m => m.Cast)
+            </div>
+        </div>
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label asp-for="IMDBScore" class="label-color"></label>
+            </div>
+            <div class="col-4">
+                @Html.DisplayFor(m => m.IMDBScoreStr)
+            </div>
+        </div>
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label asp-for="Description" class="label-color"></label>
+            </div>
+            <div class="col-4">
+                @Html.DisplayFor(m => m.Description)
+            </div>
+        </div>
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label asp-for="Genre" class="label-color"></label>
+            </div>
+            <div class="col-4">
+                @Html.DisplayFor(m => m.Genre)
+            </div>
+        </div>
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label asp-for="Approved" class="label-color"></label>
+            </div>
+            <div class="col-4">
+                @Html.DisplayFor(m => m.Approved)
+            </div>
+        </div>
+        <div class="row create-style">
+            <div class="col-2">
+                <label class="label-color" style="text-decoration:underline;">Specific Infos</label>
+            </div>
+            <div class="col-4">
+            </div>
+        </div>
+        <div class="row create-style">
+            <div class="col-2">
+                <label asp-for="AddedDate" class="label-color"></label>
+            </div>
+            <div class="col-4">
+                @Html.DisplayFor(m => m.AddedDate)
+            </div>
+        </div>
+        <div class="row  create-style">
+            <div class="col-2">
+                <label asp-for="UploadedBy" class="label-color"></label>
+            </div>
+            <div class="col-4">
+                @Html.DisplayFor(m => m.UploadedBy)
+            </div>
+        </div>
+        <div class="row mb-1 create-style">
+            <div class="col-2">
+                <label asp-for="InFront" class="label-color"></label>
+            </div>
+            <div class="col-4">
+                @Html.DisplayFor(m => m.InFront)
+            </div>
+        </div>
+        <div class="row  create-style">
+            <div class="col-2">
+                <label asp-for="ApprovedBy" class="label-color"></label>
+            </div>
+            <div class="col-4">
+                @Html.DisplayFor(m => m.ApprovedBy)
+            </div>
+        </div>
+        <div class="row mt-1 mb-1">
+            <div class="col-2"></div>
+            <div class="col-4 text-right">
+                <input type="submit" asp-route-id="@Model.Id" class="btn btn-ekle" value="Delete" />
+            </div>
+        </div>
+    </div>
+</form>

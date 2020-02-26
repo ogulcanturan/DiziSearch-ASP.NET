@@ -1,0 +1,25 @@
+﻿@model IEnumerable<string>
+@*<a class="btn btn-block bg-dark ml-2 mb-1 @("Home" == ViewBag.Merak ? "btn-danger" +" text-danger" : "btn-secondary")"
+    asp-action="List"
+    asp-controller="Home"
+    asp-route-category=""
+    asp-route-page="1">Home Page</a>*@
+    @foreach (var category in Model)
+    {<div class="col">
+            <a style=";background-color:#000;@(category == ViewBag.CategoryIs ? "color:#ffd800;" +"border: 1px solid #ffd800;" : "color:#ebebeb;")" class="btn btn-block ml-2 mb-1 font-weight-bold"
+               asp-action="Index"
+               asp-controller="Dizi"
+               asp-route-category="@category"
+               asp-route-page="1">@category</a>
+        </div>
+    }
+    @if (ViewBag.CategoryIs != "")
+    {
+        <div class="col">
+            <a asp-controller="Dizi" asp-action="Index" asp-route-category="" asp-route-page="1" style="background-color:#0094ff;color:white;" class="btn btn-block ml-2 mb-1 font-weight-bold">Clear</a>
+        </div>
+    }
+<style>
+    .stickya {
+    }
+</style>
